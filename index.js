@@ -41,7 +41,7 @@
              sessionStorage.setItem("token", data.token)            
          })
          .catch(e => {
-             loginResult.textContent = "Epäonnistui."
+             loginResult.textContent = "Epäonnistui!"
          })
          
  }
@@ -61,5 +61,5 @@
      fetch('http://localhost/tietoturva-harjoitustyo/resources.php', params)
          .then(resp=>resp.json())
          .then(json=> resourceElem.textContent=json.message )
-         .catch(e=>resourceElem.textContent="Virhe tuli pyynnössä.")
+         .catch(e=>resourceElem.textContent="Virhe pyynnössä.")
  }

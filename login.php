@@ -7,7 +7,7 @@ require('inc/functions.php');
 
 //Tarkistetaan tuleeko palvelimelle basic login tiedot (Authorization: Basic asfkjsafdjsajflkasj)
 if( isset($_SERVER['PHP_AUTH_USER']) ){
-    if(checkUser(openDb(), $_SERVER['PHP_AUTH_USER'],$_SERVER["PHP_AUTH_PW"] )){
+    if(checkUser(createDbConnection(), $_SERVER['PHP_AUTH_USER'],$_SERVER["PHP_AUTH_PW"] )){
         //luodataan jwt payload
         $payload = array(
             "iat" => time(),

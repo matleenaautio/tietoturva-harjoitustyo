@@ -21,18 +21,18 @@ if(isset($requestHeaders['authorization'])) {
         $token = $auth_value[1];
 
         try {
-            //Tarkistetaan ja dekoodataan token. Jo ei validi, siirtyy catchiin.
+            //Tarkistetaan ja dekoodataan token. Jos ei validi, siirtyy catchiin.
             $decoded = JWT::decode($token, new Key(base64_encode('moiccu'), 'HS256'));
 
             //Onnistunut dekoodaus sisältää sub-kentän, jossa käyttäjänimi
             $username = $decoded->sub;
-            $dbcon = openDb();
-            createUser($dbcon, $fname, $lname, $username, $passwd);
+            //$dbcon = openDb();
+            //createUserInfo($dbcon, $username, $email, $phone, $address, $zipcode, $city);
             //Lähetetään clientille ykstyisen resurssi, koska oikeus tarkistettu
-            //echo json_encode(array("message"=>"This is your private resource ".$username) );
+            echo json_encode(array("message"=>"This is your private resource ".$username) );
             
         } catch (Exception $e){
-            echo json_encode(array("message"=>"No access!!") );
+            echo json_encode(array("message"=>"No access!") );
         }
 
     }

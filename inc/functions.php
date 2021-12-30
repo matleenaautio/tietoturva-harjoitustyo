@@ -1,6 +1,6 @@
 <?php
 
-    function openDb(): object {
+   function openDb(): object {
         $ini = parse_ini_file("config.ini", true);
     
         $host = $ini['host'];
@@ -32,7 +32,7 @@
             $rows = $prepare->fetchAll();
 
             foreach($rows as $row){
-                $pw = $row["passwd"];
+                $pw = $row["password"];
                 if( password_verify($passwd, $pw)) { 
                     return true;
                 }
@@ -121,9 +121,9 @@
 
         // testi, että hash toimii
         //createUser($con,'Kalle','Laitela', 'laitelak', 'miia');
-        createUser($con, "Lasse", "Sievinen", "lasu", "hirvipaisti");
+        //createUser($con, "Lasse", "Sievinen", "lasu", "hirvipaisti");
 
-        //createUserInfo($con, 'laitelak', 'kalle@laitela.com', '040404040', 'Pihlajakatu 1', '00100', 'Helsinki' );
+        createUserInfo($con, 'lasu', 'lasse@sievinen.com', '040404040', 'Pihlajakatu 2', '00100', 'Helsinki' );
 
     } 
 
